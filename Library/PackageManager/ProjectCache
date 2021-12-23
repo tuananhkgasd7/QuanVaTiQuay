@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637758494990000000
+      ticks: 637758911460000000
     m_Hash: 238244261
   m_LockFileStatus:
     m_FilePath: /Users/maingochan/Documents/tuan_anh/Game/FinalProject/QuanVaTiQuay/Packages/packages-lock.json
@@ -13,7 +13,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637758495440000000
+      ticks: 637758911460000000
     m_Hash: 201114752
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}

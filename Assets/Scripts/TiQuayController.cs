@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlimeController : MonoBehaviour
+public class TiQuayController : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -16,8 +16,8 @@ public class SlimeController : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
         Vector2 position = transform.position;
-        position.x += (0.01f * horizontal);
-        position.x += (0.01f * vertical);
+        position.x += (0.05f * horizontal);
+        position.y += (0.05f * vertical);
         transform.position = position;
     }
 }
