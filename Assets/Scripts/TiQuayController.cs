@@ -25,6 +25,7 @@ public class TiQuayController : MonoBehaviour
     {
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
+
         Vector2 moving = new Vector2(horizontal, vertical);
         if(!Mathf.Approximately(moving.x, 0.0f) || !Mathf.Approximately(moving.y, 0.0f)){
             direction = moving.normalized;
@@ -32,6 +33,7 @@ public class TiQuayController : MonoBehaviour
         anim.SetFloat("Move X", direction.x);
         anim.SetFloat("Move Y", direction.y);
         anim.SetFloat("Speed", moving.magnitude);
+        
         // if(Input.GetKeyDown(KeyCode.Space)){
         //     Launch();
         // }
