@@ -11,13 +11,33 @@ public class TiQuayController : MonoBehaviour
     float vertical;
   
     //Animator
-    Animator anim;
-    Vector2 direction = Vector2.zero;
+    Animator animator;
+
+    //Inventory
+    private Inventory inventory;
+    [SerializeField] private UI_Inventory uiInventory;
+
+    private void Awake(){
+        inventory = new Inventory();
+        uiInventory.SetInventory(inventory);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider) {
+        ItemWorld itemWorld = collider.GetComponent<ItemWorld>();
+        if(itemWorld != null){
+            // if(Input.GetKey(KeyCode.Space)){
+                inventory.AddItem(itemWorld.GetItem());
+                itemWorld.DestroySelf();
+            // }
+        }
+    
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -27,13 +47,14 @@ public class TiQuayController : MonoBehaviour
         vertical = Input.GetAxis("Vertical");
 
         Vector2 moving = new Vector2(horizontal, vertical);
+        Vector2 direction = Vector2.zero;
         if(!Mathf.Approximately(moving.x, 0.0f) || !Mathf.Approximately(moving.y, 0.0f)){
             direction = moving.normalized;
         }
-        anim.SetFloat("Move X", direction.x);
-        anim.SetFloat("Move Y", direction.y);
-        anim.SetFloat("Speed", moving.magnitude);
-        
+        animator.SetFloat("Move X", direction.x);
+        animator.SetFloat("Move Y", direction.y);
+        animator.SetFloat("Speed", moving.magnitude);
+
         // if(Input.GetKeyDown(KeyCode.Space)){
         //     Launch();
         // }
