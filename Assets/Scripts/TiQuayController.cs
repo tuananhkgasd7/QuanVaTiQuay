@@ -12,6 +12,7 @@ public class TiQuayController : MonoBehaviour
   
     //Animator
     Animator anim;
+    Vector2 direction = Vector2.zero;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,14 +27,13 @@ public class TiQuayController : MonoBehaviour
         vertical = Input.GetAxis("Vertical");
 
         Vector2 moving = new Vector2(horizontal, vertical);
-        Vector2 direction = Vector2.zero;
         if(!Mathf.Approximately(moving.x, 0.0f) || !Mathf.Approximately(moving.y, 0.0f)){
             direction = moving.normalized;
         }
         anim.SetFloat("Move X", direction.x);
         anim.SetFloat("Move Y", direction.y);
         anim.SetFloat("Speed", moving.magnitude);
-
+        
         // if(Input.GetKeyDown(KeyCode.Space)){
         //     Launch();
         // }
