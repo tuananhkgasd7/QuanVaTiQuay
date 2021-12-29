@@ -40,7 +40,7 @@ public class UI_Inventory : MonoBehaviour
             Image image = itemSlotRectTransform.Find("image").GetComponent<Image>(); 
             image.sprite = item.GetSprite();
 
-            TextMeshPro uiText = itemSlotRectTransform.Find("text").GetComponent<TextMeshPro>();
+            TextMeshProUGUI uiText = itemSlotRectTransform.Find("amountText").GetComponent<TextMeshProUGUI>();
             if(item.amount > 1){
                 uiText.SetText(item.amount.ToString()); 
             } else {

@@ -17,10 +17,10 @@ public class TiQuayController : MonoBehaviour
     private Inventory inventory;
     [SerializeField] private UI_Inventory uiInventory;
 
-    private void Awake(){
-        inventory = new Inventory();
-        uiInventory.SetInventory(inventory);
-    }
+    // private void Awake(){
+    //     inventory = new Inventory();
+    //     uiInventory.SetInventory(inventory);
+    // }
 
     private void OnTriggerEnter2D(Collider2D collider) {
         ItemWorld itemWorld = collider.GetComponent<ItemWorld>();
@@ -35,9 +35,11 @@ public class TiQuayController : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    {        
         rigidbody2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        inventory = new Inventory();
+        uiInventory.SetInventory(inventory);
     }
 
     // Update is called once per frame
