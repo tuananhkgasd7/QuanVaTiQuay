@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using CodeMonkey.Utils;
 public class TiQuayController : MonoBehaviour
 {
     //Speed
@@ -16,11 +16,13 @@ public class TiQuayController : MonoBehaviour
     //Inventory
     private Inventory inventory;
     [SerializeField] private UI_Inventory uiInventory;
+    public static TiQuayController Instance {get; private set; }
 
-    // private void Awake(){
-    //     inventory = new Inventory();
-    //     uiInventory.SetInventory(inventory);
-    // }
+    private void Awake(){
+        inventory = new Inventory();
+        uiInventory.SetTiQuayController(this);
+        uiInventory.SetInventory(inventory);   
+    }
 
     private void OnTriggerEnter2D(Collider2D collider) {
         ItemWorld itemWorld = collider.GetComponent<ItemWorld>();
@@ -35,11 +37,10 @@ public class TiQuayController : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {        
+    {
+        Debug.Log("Start");
         rigidbody2d = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
-        inventory = new Inventory();
-        uiInventory.SetInventory(inventory);
+        animator = GetComponent<Animator>(); 
     }
 
     // Update is called once per frame
@@ -68,5 +69,9 @@ public class TiQuayController : MonoBehaviour
         position.x += (speed * horizontal) * Time.deltaTime;
         position.y += (speed * vertical) * Time.deltaTime;
         rigidbody2d.MovePosition(position);
+    }
+
+    public Vector3 GetPosition() {
+        return transform.position;
     }
 }

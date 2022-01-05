@@ -23,10 +23,9 @@ public class Item {
 
     public bool IsStackable(){
         switch(itemType){
-            default:
-            case ItemType.Banana: 
-            case ItemType.Straw:
-                return true;
+        default:
+        case ItemType.Banana:   return true;
+        case ItemType.Straw:    return true;
         }
     }
     
